@@ -1,0 +1,169 @@
+//trois point
+
+    <style>
+
+        .menu-btn {
+          background: none;
+          border: none;
+          font-size: 24px;
+          cursor: pointer;
+        }
+    
+        .menu {
+          display: none;
+          list-style-type: none;
+          padding: 0;
+          margin: 0;
+          position: absolute;
+          background-color: #f9f9f9;
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+    
+        .menu li {
+          padding: 12px 16px;
+          cursor: pointer;
+        }
+    
+        .menu li:hover {
+          background-color: #ddd;
+        }
+    
+       </style>
+
+**********************************
+
+<div style="position: relative">
+    <button class="menuè-btn" onclick="togglemenu()">&#x22EE;</button>
+    <ul class="menu-btn" id="menu liste">
+      <li>option 1</li>
+      <li>option 2</li>
+      <li>option 3</li>
+    </ul>
+  </div>
+  <script>
+    function togglemenu(){
+      var menu= document.getElementId("menu liste");
+      if(menu.tyle.display === "block"){menu.style.display="none";} else{menu.tyle.display="block";}
+    }
+    window.onvlick = function(event)
+    {if(!event.target.matches('.menu-btn')){var menus = document.getElementsByClassName("menu"); for (var i =0;i<menus.length; i++){var openMenu = menus[i]; if (openMenu.style.display === "block"){openMenu.style.display = "none";}}}}
+  </script>
+
+  -------------------------------------
+  //php
+
+  <?php
+  
+  
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Récupération des données du formulaire
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+
+    // Validation des données
+    $errors = [];
+	
+    // Vérification que le nom d'utilisateur n'est pas vide
+    if (empty($username)) {
+        $errors[] = "Le nom d'utilisateur est requis.";
+    }
+
+    // Vérification de l'adresse e-mail
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "L'adresse e-mail n'est pas valide.";
+    }
+
+    // Vérification que les mots de passe correspondent
+    if ($password !== $confirm_password) {
+        $errors[] = "Les mots de passe ne correspondent pas.";
+    }
+
+    // Affichage des erreurs ou succès
+
+    if (empty($errors)) {
+        // Si aucune erreur, le traitement peut continuer (ex: insertion dans la base de données)
+        echo "Inscription réussie ! Bienvenue, $username";
+    } else {
+        // Afficher les erreurs
+        foreach ($errors as $error) {
+            echo "<p style='color:red;'>$error</p>";
+        }
+    }
+}
+?>
+
+-------------------------------------
+// barre de tache
+<style>
+  .navbar{  
+    position: fixed;
+    bottom: o;
+    left: 0;
+    width: 100%;
+    background-color: brown;
+    color: beige;
+    text-align: center;
+    padding: 10px 0;
+    z-index: 1000;        
+    }
+    .content{  
+      margin-top: 60px;
+      padding: 20px;
+      }
+</style>
+
+***************************
+
+<div class="navbar"></div>
+<a href="./page1.html" style="color: blue; text-decoration: aqua; padding: 0 15px;">PAGE 1</a>
+
+<a href="./Test 2.html" style="color: blue; text-decoration: aqua; padding: 0 15px;">PAGE 2</a>
+</div>
+
+-----------------------------------
+//Partie profil
+    <style>
+        .profile-section{
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #000;
+
+        }
+    </style>
+
+    ****************************
+    <section>
+      <form id="profileForm">
+<label for="username">Nom d'utilisation</label><br>
+<input type="text" id="username" Name="username" required ><br><br>
+
+<label for="email">Email</label><br>
+<input type="email" id="email" name="email" required><br><br>
+</form>
+</section>
+
+<div class="profile-section" id="profilesection">
+    <h2>profil de l'utilisateur</h2>
+    <p><strong>Nom :</strong><span id="displayusername"></span></p>
+
+    <p><strong>Email :</strong><span id="displayemail"></span></p>
+
+</div>
+
+<script>
+    // Fonction pour transcrire les informations du formulaire dans la section Profil
+    document.getElementById('profileForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Empêcher la soumission par défaut du formulaire
+        
+        // Récupérer les valeurs du formulaire
+        const name = document.getElementById('username').value;
+        
+        const email = document.getElementById('email').value;
+        
+        // Afficher les valeurs dans la section Profil
+        document.getElementById('displayusername').textContent = name;
+        document.getElementById('displayemail').textContent = email;
+    });
+</script>
